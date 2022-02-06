@@ -16,9 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from house import views
+from news import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('house/', include('house.urls')),
+    path('news/', include('news.urls')),
+    path('search/', include('search.urls')),
+    path('terms/', include('terms.urls')),
+    path('community/', include('community.urls')),
+    path('qna/', include('qna.urls')),
     # path('login/', include('login.urls')),
 ]

@@ -40,6 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'house.apps.HouseConfig',
     'login.apps.LoginConfig',
+    'news.apps.NewsConfig',
+    'search.apps.SearchConfig',
+    'terms.apps.TermsConfig',
+    'community.apps.CommunityConfig',
+    'qna.apps.QnaConfig',
     'bootstrap4',
 ]
 
