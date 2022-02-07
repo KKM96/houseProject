@@ -27,33 +27,45 @@
 
 <body class="text-center">
     <div class="row">
-        <!--login_img-->
+        <!--signup_img-->
         <div class="col">
-            <img src="{% static 'assets/img/signin3.jpg'%}" class="img-thumbnail mx-5">
+            <img src="{% static 'assets/img/signin2.jpg'%}" class="img-thumbnail mx-5">
         </div>
-        <!--login-->
+        <!--signup-->
         <div class="col">
-            <main class="form-signin my-5">
-              <form method="post" class="post-form" action="{% url 'login:login' %}">
+            <main class="form-signin my-2">
+              <form method="post" class="post-form">
                 {% csrf_token %}
                 {% include "form_errors.html" %}
-                <h1 class="h3 mb-3 fw-normal">로그인</h1>
+                <h1 class="h3 mb-3 fw-normal">회원가입</h1>
                 <!--UserID-->
                 <div class="form-floating">
                     <label for="username">UserID</label>
                     <input type="text" class="form-control" name="username" id="username"
                            value="{{ form.username.value|default_if_none:'' }}">
                 </div>
-                <!--Pw-->
+                <!--pw1-->
                 <div class="form-floating">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" name="password" id="password"
-                           value="{{ form.password.value|default_if_none:'' }}">
+                    <label for="password1">Password</label>
+                    <input type="password" class="form-control" name="password1" id="password1"
+                           value="{{ form.password1.value|default_if_none:'' }}">
+                </div>
+                <!--pw2-->
+                <div class="form-floating">
+                    <label for="password2">Confirm Password</label>
+                    <input type="password" class="form-control" name="password2" id="password2"
+                           value="{{ form.password2.value|default_if_none:'' }}">
+                </div>
+                <!--email-->
+                <div class="form-floating">
+                    <label for="email">email</label>
+                    <input type="text" class="form-control" name="email" id="email"
+                           value="{{ form.email.value|default_if_none:'' }}">
                 </div>
                 <!-- Divider-->
                 <hr class="my-4" />
-                <button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button><p></p>
-                <a href="{% url 'login:signup' %}">회원가입</a>
+                <button class="w-100 btn btn-lg btn-primary" type="submit">생성하기</button><p></p>
+                <a href="{% url 'login:login' %}">기존 계정으로 로그인</a>
                 <p class="mt-3 mb-3 text-muted">&copy; for my sweet home</p>
               </form>
             </main>
