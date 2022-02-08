@@ -20,6 +20,17 @@
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
 
+{% if question_list %}
+    <ul>
+    {% for question in question_list %}
+        <li><a href="#;">{{ question.subject }}</a></li>
+        <a href="#;">{{ question.content }}</a>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>질문이 없습니다.</p>
+{% endif %}
+
             <!-- Divider-->
             <hr class="my-4" />
         </div>
