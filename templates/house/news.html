@@ -16,41 +16,74 @@
     </div>
 </header>
 <!-- Main Content-->
-<div class="container px-4 px-lg-5">
-    <div class="row gx-4 gx-lg-5 justify-content-left">
-        <div class="col-md-10 col-lg-8 col-xl-7">
-            <!--sidebar-->
-            <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
-                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                  <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-                  <span class="fs-4">똑똑하게 집구하기</span>
+<div class="container-fluid">
+    <div class="row">
+        <!--sidebar-->
+        <div class="col-lg-2" style="width: 300px;">
+            <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+                <a class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+                  <svg class="bi me-2" width="30" height="24"></svg>
+                  <span class="fs-5 fw-semibold">News</span>
                 </a>
-                <hr>
-                <ul class="nav nav-pills flex-column mb-auto">
-                  <li class="nav-item">
-                    <a href="#" class="nav-link active" aria-current="page">
-                      <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-                      똑똑하게 집 구하기 - 매매
-                    </a>
+                <ul class="list-unstyled ps-0">
+                  <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#news" aria-expanded="true">
+                      부동산 뉴스
+                    </button>
+                    <div class="collapse" id="news">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                          <li><a href="#" class="link-dark rounded">- Naver News</a></li>
+                          <li><a href="#" class="link-dark rounded">- Daum News</a></li>
+                      </ul>
+                    </div>
                   </li>
-                  <li>
-                    <a href="#" class="nav-link text-white">
-                      <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
-                      똑똑하게 집 구하기 - 전월세
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="nav-link text-white">
-                      <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-                      똑똑하게 집 구하기 - 청약
-                    </a>
+                  <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#howto-collapse" aria-expanded="false">
+                      똑똑하게 집 구하기
+                    </button>
+                    <div class="collapse" id="howto-collapse">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a href="#" class="link-dark rounded">- 매매</a></li>
+                        <li><a href="#" class="link-dark rounded">- 전월세</a></li>
+                        <li><a href="#" class="link-dark rounded">- 청약</a></li>
+                      </ul>
+                    </div>
                   </li>
                 </ul>
             </div>
+        </div>
+        <!--content-->
+        <div class="col-lg-4" style="width:650px">
+            <table class="table" style="width: 200px;">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">First</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Handle</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
             <!-- Divider-->
             <hr class="my-4" />
         </div>
-    </div>
+
 </div>
 <!-- Footer-->
 <footer class="border-top">
