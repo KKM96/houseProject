@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'search.apps.SearchConfig',
     'terms.apps.TermsConfig',
     'community.apps.CommunityConfig',
-    'qna.apps.QnaConfig',
     'bootstrap4',
 ]
 
