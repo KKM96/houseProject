@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('../../static/assets/img/house-search.jpg')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>Search</h1>
+                    <span class="subheading">부동산 가격 조회</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content-->
+<main>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!--sidebar-->
+            <div class="col-lg-2" style="width: 350px;">
+                <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+                    <a href="{% url 'search:search' %}" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+                      <svg class="bi me-2" width="30" height="24"></svg>
+                      <span class="fs-3 fw-bold">Search</span>
+                    </a>
+                    <ul class="list-unstyled ps-0">
+                      <li class="mb-1">
+                        <button class="btn align-items-center rounded collapsed" data-bs-toggle="collapse"
+                                data-bs-target="#search" aria-expanded="true">
+                            <a href="{% url 'search:search' %}">
+                              <h5>부동산 가격 검색</h5>
+                            </a>
+                        </button>
+                      </li>
+                      <li class="mb-1">
+                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                                data-bs-target="#analysis" aria-expanded="false">
+                            <a href="{% url 'search:analysis'%}">
+                                <h5>부동산 가격 분석</h5>
+                            </a>
+                        </button>
+                      </li>
+                    </ul>
+                </div>
+            </div>
+            <!--Main Context-->
+
+        </div>
+    </div>
+</main>
+            <!-- Divider-->
+            <hr class="my-4" />
+        </div>
+    </div>
+</div>
+<!-- Footer-->
+<footer class="border-top">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="small text-center text-muted fst-italic">Copyright &copy; for my sweet home 2022</div>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}

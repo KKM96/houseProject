@@ -17,28 +17,191 @@
 </header>
 <!-- Main Content-->
 <main>
-    <!--검색창-->
-    <div class="container-fluid px-4">
-        <div class="card mb-4">
-            <span class="text-center">
-                <h2>Search</h2>
-            </span>
-            <div class="row">
-                <div class="col mx-3">
-                    <h4>지역별</h4>
-                </div>
-                <div class="col mx-3">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                        지역별(시)
+
+    <div class="container-fluid">
+        <div class="row">
+            <!--sidebar-->
+            <div class="col-lg-2" style="width: 450px;">
+                <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+                    <a href="{% url 'search:search' %}" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+                      <svg class="bi me-2" width="30" height="24"></svg>
+                      <span class="fs-3 fw-bold">Search</span>
+                    </a>
+                    <ul class="list-unstyled ps-0">
+                      <li class="mb-1">
+                        <button class="btn align-items-center rounded collapsed" data-bs-toggle="collapse"
+                                data-bs-target="#search" aria-expanded="true">
+                            <a href="{% url 'search:search' %}">
+                              <h5>부동산 가격 검색</h5>
+                            </a>
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <li><button class="dropdown-item" type="button">Action</button></li>
-                        <li><button class="dropdown-item" type="button">Another action</button></li>
-                        <li><button class="dropdown-item" type="button">Something else here</button></li>
-                        </ul>
+                      </li>
+                      <li class="mb-1">
+                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                                data-bs-target="#analysis" aria-expanded="false">
+                            <a href="{% url 'search:analysis' %}">
+                                <h5>부동산 가격 분석</h5>
+                            </a>
+                        </button>
+                      </li>
+                    </ul>
+                </div>
+            </div>
+            <!--context-->
+            <div class="col" style="width:1100px">
+                <!--searchbar-->
+                <div class="card mb-4 mx-5" style="width:1050px">
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                    <span class="text-center">
+                        <h2>Search</h2>
+                    </span>
+                    <div class="container px-4 px-lg-5">
+                        <form action="" method="get">
+                            <!-- keyword-trade search  -->
+                            <div class="form-group">
+                                <h5>거래형태</h5>
+                                <select class="form-control search-fields" name="trade">
+                                    <option selected="true" disabled="disabled">Trade</option>
+                                    {% for trade in search_list %}
+                                        <option value="{{trade}}">{{trade}}</option>
+                                    {% endfor %}
+                                </select>
+                                <!-- Divider-->
+                                <hr class="my-6" />
+                            </div>
+                            <!-- keyword-region1 search  -->
+                            <div class="form-group">
+                                <h5>시/도</h5>
+                                <select class="form-control search-fields" name="region1">
+                                    <option selected="true" disabled="disabled">Region1</option>
+                                    {% for region1 in search_region1 %}
+                                        <option value="{{region1}}">{{region1}}</option>
+                                    {% endfor %}
+                                </select>
+                                <!-- Divider-->
+                                <hr class="my-6" />
+                            </div>
+                            <!-- keyword-region2 search  -->
+                            <div class="form-group">
+                                <h5>시/군/구</h5>
+                                <select class="form-control search-fields" name="region2">
+                                    <option selected="true" disabled="disabled">region2</option>
+                                    {% for region2 in search_region2 %}
+                                        <option value="{{region2}}">{{region2}}</option>
+                                    {% endfor %}
+                                </select>
+                                <!-- Divider-->
+                                <hr class="my-6" />
+                            </div>
+                            <!-- keyword-region3 search  -->
+                            <h5>읍/면/동</h5>
+                            <div class="form-group">
+                                <select class="form-control search-fields" name="region2">
+                                    <option selected="true" disabled="disabled">region3</option>
+                                    {% for region3 in search_region3 %}
+                                        <option value="{{region3}}">{{region3}}</option>
+                                    {% endfor %}
+                                </select>
+                                <!-- Divider-->
+                                <hr class="my-6" />
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-secondary btn-lg btn-block" style="width:951px">
+                                    <i class="fa fa-search"></i>
+                                    Search
+                                </button>
+                                <p></p>
+                            </div>
+                        </form>
                     </div>
                 </div>
+
+                <!--search result table-->
+                <table class="table mb-4 mx-5" style="width:1050px">
+                    <thead>
+                        <tr class="text-center thead-dark">
+                            <th>번호</th>
+                            <th style="width:45%">건물이름</th>
+                            <th>평수</th>
+                            <th style="width:30%">가격</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                            <tr class="text-center">
+                                <td>1</td>
+                                <td class="text-left">
+                                    테스트 아파트
+                                </td>
+                                <!-- 글쓴이 추가 -->
+                                <td>60m^2이상</td>
+                                <td>3,000,000,000</td>
+                            </tr>
+<!--                    {% if question_list %}-->
+<!--                        {% for question in question_list %}-->
+<!--                        {% endfor %}-->
+<!--                    {% else %}-->
+<!--                        <tr>-->
+<!--                            <td colspan="3">질문이 없습니다.</td>-->
+<!--                        </tr>-->
+<!--                    {% endif %}-->
+                    </tbody>
+                </table>
+
+                <!--페이징 처리 -->
+                <url class="pagination justify-content-center" style="width:1050px">
+                    <!--이전 페이지-->
+                    {% if question_list.has_previous %} <!-- question_list => page.obj 에서 -->
+                        <li class="page-item">
+                            <!-- 검색기능 추가 -------------------------------------------------->
+                            <a class="page-link"
+                               data-page="{{ question_list.previous_page_number }}" href="#">이전</a>
+                        </li> <!-- 검색 기능 이전 코딩 href="?page={{ question_list.previous_page_number}}" -->
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">
+                                <!-- 링크 기능 비 활성화, #=> 아무 것도 링크 x 의미 -->
+                                이전
+                            </a>
+                        </li>
+                    {% endif %}
+
+                    <!-- 페이지 list -->
+                    {% for page_number in question_list.paginator.page_range %}
+                        {% if page_number >= question_list.number|add:-5 and page_number <= question_list.number|add:5 %}
+                            {% if page_number == question_list.number %}
+                            <!-- 순회하는 리스트와 데이터 리스트가 일치한다면-->
+                                <li class="page-item active" aria-current="page">
+                                    <a class="page-link" data-page = "{{ page_number }}" href="#">
+                                        {{ page_number }}
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li class="page-item">
+                                    <a class="page-link" data-page = "{{ page_number }}" href="#">
+                                        {{ page_number }}
+                                    </a>
+                                </li>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+
+                    <!-- 다음 페이지 -->
+                    {% if question_list.has_next %}
+                    <li class="page-item">
+                        <a class="page-link"
+                           data-page = "{{ question_list.next_page_number }}"
+                           href="#">다음</a>
+                    </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">
+                                다음
+                            </a>
+                        </li>
+                    {% endif %}
+                </url>
             </div>
         </div>
     </div>
