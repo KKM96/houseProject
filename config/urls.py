@@ -25,5 +25,5 @@ urlpatterns = [
     path('terms/', include('terms.urls')),
     path('community/', include('community.urls')),
     path('login/', include('login.urls')),
-    path('', views.index, name='index'),  # / 페이지에 해당하는 urlpatterns
+    path('', views.index, name='index'),  # / 페이지에 해당하는 urlpattern
 ]
