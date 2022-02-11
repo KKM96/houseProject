@@ -6,3 +6,9 @@ def search(request):
 
 def analysis(request):
     return render(request, 'search/analysis.html')
+
+def month(request):
+    return render(request, 'search/month.html')
+
+def sales(request):
+    return render(request, 'search/sales.html')

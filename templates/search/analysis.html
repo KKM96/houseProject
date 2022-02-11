@@ -21,7 +21,7 @@
     <div class="container-fluid">
         <div class="row">
             <!--sidebar-->
-            <div class="col-lg-2" style="width: 350px;">
+            <div class="col-lg-2" style="width: 450px;">
                 <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
                     <a href="{% url 'search:search' %}" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
                       <svg class="bi me-2" width="30" height="24"></svg>
@@ -29,17 +29,21 @@
                     </a>
                     <ul class="list-unstyled ps-0">
                       <li class="mb-1">
-                        <button class="btn align-items-center rounded collapsed" data-bs-toggle="collapse"
+                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#search" aria-expanded="true">
-                            <a href="{% url 'search:search' %}">
                               <h5>부동산 가격 검색</h5>
-                            </a>
-                        </button>
+                        </button><p></p>
+                        <div class="collapse" id="search">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a href="{% url 'search:month' %}" class="link-dark rounded"><h6>- 전월세</h6></a></li>
+                              <li><a href="{% url 'search:sales' %}" class="link-dark rounded"><h6>- 매매</h6></a></li>
+                            </ul>
+                        </div>
                       </li>
                       <li class="mb-1">
                         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#analysis" aria-expanded="false">
-                            <a href="{% url 'search:analysis'%}">
+                            <a href="{% url 'search:analysis' %}">
                                 <h5>부동산 가격 분석</h5>
                             </a>
                         </button>
