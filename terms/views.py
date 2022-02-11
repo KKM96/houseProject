@@ -1,32 +1,34 @@
 from django.shortcuts import render
-from .models import Question
+from .models import Terms
 from django.core.paginator import Paginator
+from django.db.models import Q, Count
+# csv reading 용 import
+import json
+from django.views import View
+from django.http import HttpResponse, JsonResponse
+import csv
+import pandas as pd
+
 
 # Create your views here.
 def terms(request):
-    return render(request, 'house/terms.html')
-
-def terms(request):
-    """
-    terms 목록 출력
-    """
+    result = []
     # 입력 파라미터
     page = request.GET.get('page', '1')  # 페이지
     kw = request.GET.get('kw', '')  # 검색어
 
-    # 조회
-    question_list = Question.objects.order_by('-create_date')
+    term_lists = Terms.objects.all()
+    # 검색
     if kw:
-        question_list = question_list.filter(
-            Q(subject__icontains=kw) |  # 제목검색
-            Q(content__icontains=kw) |  # 내용검색
-            Q(author__username__icontains=kw) |  # 질문 글쓴이검색
-            Q(answer__author__username__icontains=kw)  # 답변 글쓴이검색
+        term_lists = term_lists.filter(
+            Q(Term_name__icontains=kw) |
+            Q(Term_def__icontains=kw)
         ).distinct()
-
-    # 페이징처리
-    paginator = Paginator(question_list, 10)  # 페이지당 10개씩 보여주기
+    # 페이징 처리
+    paginator = Paginator(term_lists, 10)
     page_obj = paginator.get_page(page)
 
-    context = {'question_list': page_obj, 'page': page, 'kw': kw}
+    context = {'term_lists': page_obj, 'page':page, 'kw':kw }
     return render(request, 'house/terms.html', context)
+
+

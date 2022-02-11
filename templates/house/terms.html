@@ -16,76 +16,93 @@
     </div>
 </header>
 <!-- Main Content-->
-<div class="container px-4 px-lg-5">
+<div class="container-fluid">
+    <!--search bar-->
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="row justify-content-end my-3" >
+                <a href="{% url 'terms:terms' %}" style="text-center"><h3>Terms Home</h3></a>
+                <div class="col-4 input-group">
 
-    <div class="row justify-content-end my-3">
-        <div class="col-4 input-group">
-            <input type="text" class="form-control kw" value="{{ kw|default_if_none:'' }}">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button" id="btn_search">검색</button>
+                    <input type="text" class="form-control kw"
+                           value="{{ kw|default_if_none:'' }}">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button"
+                                id="btn_search">검색</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-{% if question_list %}
-    <ul>
-    {% for question in question_list %}
-        <li><a href="#;">{{ question.subject }}</a></li>
-        <a href="#;">{{ question.content }}</a>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>질문이 없습니다.</p>
-{% endif %}
-
-<!-- 페이징처리 시작 -->
-<ul class="pagination justify-content-center">
-    <!-- 이전페이지 -->
-    {% if question_list.has_previous %}
-    <li class="page-item">
-        <a class="page-link" href="?page={{ question_list.previous_page_number }}">이전</a>
-<!--        <a class="page-link" data-page="{{ question_list.previous_page_number }}" href="#;">이전</a>-->
-    </li>
-    {% else %}
-    <li class="page-item disabled">
-        <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
-    </li>
-    {% endif %}
-    <!-- 페이지리스트 -->
-    {% for page_number in question_list.paginator.page_range %}
-    {% if page_number >= question_list.number|add:-5 and page_number <= question_list.number|add:5 %}
-        {% if page_number == question_list.number %}
-        <li class="page-item active" aria-current="page">
-            <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
-<!--            <a class="page-link" data-page="{{ page_number }}" href="#;">{{ page_number }}</a>-->
-        </li>
-        {% else %}
-        <li class="page-item">
-            <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
-<!--            <a class="page-link" data-page="{{ page_number }}" href="#;">{{ page_number }}</a>-->
-        </li>
-        {% endif %}
-    {% endif %}
-    {% endfor %}
-    <!-- 다음페이지 -->
-    {% if question_list.has_next %}
-    <li class="page-item">
-        <a class="page-link" href="?page={{ question_list.next_page_number }}">다음</a>
-<!--        <a class="page-link" data-page="{{ question_list.next_page_number }}" href="#;">다음</a>-->
-    </li>
-    {% else %}
-    <li class="page-item disabled">
-        <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
-    </li>
-    {% endif %}
-</ul>
-<!-- 페이징처리 끝 -->
-<form id="searchForm" method="get" action="{% url 'index' %}">
-    <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
-    <input type="hidden" id="page" name="page" value="{{ page }}">
-</form>
+    <!--Terms_table-->
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <!--table-->
+        <table class="table table-striped" style="width:75%">
+            <thead class="thead">
+                <tr class="text-center">
+                    <th>이름</th>
+                    <th style="width:70%">뜻</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% if term_lists %}
+            {% for term in term_lists %}
+            <tr class="text-center">
+                <td>{{term.Term_name}}</td>
+                <td>{{term.Term_def}}</td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td colspan="3">용어가 없습니다.</td>
+            </tr>
+            {% endif %}
+            </tbody>
+        </table>
+        <!-- 페이징처리 시작 -->
+        <ul class="pagination justify-content-center">
+            <!-- 이전페이지 -->
+            {% if term_lists.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ term_lists.previous_page_number }}">이전</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+            </li>
+            {% endif %}
+            <!-- 페이지리스트 -->
+            {% for page_number in term_lists.paginator.page_range %}
+            {% if page_number >= term_lists.number|add:-5 and page_number <= term_lists.number|add:5 %}
+                {% if page_number == term_lists.number %}
+                <li class="page-item active" aria-current="page">
+                    <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                </li>
+                {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                </li>
+                {% endif %}
+            {% endif %}
+            {% endfor %}
+            <!-- 다음페이지 -->
+            {% if term_lists.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ term_lists.next_page_number }}">다음</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+            </li>
+            {% endif %}
+        </ul>
+        <!-- 페이징처리 끝 -->
+        <form id="searchForm" method="get" action="{% url 'terms:terms' %}">
+            <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+            <input type="hidden" id="page" name="page" value="{{ page }}">
+        </form>
+    </div>
+{% endblock %}
 
 {% block script %}
 <script type='text/javascript'>
@@ -97,17 +114,12 @@ $(document).ready(function(){
 
     $("#btn_search").on('click', function() {
         $("#kw").val($(".kw").val());
-        $("#page").val(1);  // 검색버튼을 클릭할 경우 1페이지부터 조회한다.
+        $("#page").val(1);
         $("#searchForm").submit();
     });
 });
 </script>
 {% endblock %}
 
-            <!-- Divider-->
-            <hr class="my-4" />
-        </div>
-    </div>
-</div>
 
-{% endblock %}
+
