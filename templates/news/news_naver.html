@@ -54,9 +54,33 @@
             </div>
         </div>
         <!--content-->
-        <div class="col-lg-4" style="width:600px">
-            <img src="{% static 'assets/img/house-news.jpg'%}" width="600px" height="400px">
+        <div class="col-lg-4" style="width:800px">
+            <img src="{% static 'assets/img/house-news.jpg'%}" width="800px" height="300px">
 
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+        <!--table-->
+        <table class="table table-striped" style="width:100%">
+            <thead class="thead">
+                <tr class="text-center">
+                    <th>제목</th>
+                    <th style="width:80%">기사</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% if term_lists %}
+            {% for term in term_lists %}
+            <tr class="text-center">
+                <td>{{news.news_name}}</td>
+                <td>{{news.news_def}}</td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td colspan="3">기사 없음</td>
+            </tr>
+            {% endif %}
+            </tbody>
+        </table>
 
             <!-- Divider-->
             <hr class="my-4" />
