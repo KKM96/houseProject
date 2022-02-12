@@ -2,12 +2,6 @@ from django.shortcuts import render
 from .models import Terms
 from django.core.paginator import Paginator
 from django.db.models import Q, Count
-# csv reading 용 import
-import json
-from django.views import View
-from django.http import HttpResponse, JsonResponse
-import csv
-import pandas as pd
 
 
 # Create your views here.
