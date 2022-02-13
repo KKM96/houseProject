@@ -76,51 +76,69 @@
                             </div>
                             <!--keyword-region1 select-->
                             <div class="form-group">
-                                <h5>시/도</h5>
                                 <ul class="nav nav-tabs">
-                                    <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{% url 'search:month_gyeonggi' %}">
-                                        <div class="fs-6 fw-bold">경기도</div>
+                                  <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="{% url 'search:month_busan' %}">
+                                        <div class="fs-5 fw-bold">부산광역시</div>
                                     </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" aria-current="page" href="{% url 'search:month_daejeon' %}">
-                                            <div class="fs-6 fw-bold">대전광역시</div>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{% url 'search:month_busan' %}">
-                                        <div class="fs-6 fw-bold">부산광역시</div>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <div class="fs-5 fw-bold">문의내역</div>
                                     </a>
-                                    </li>
-                                    <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{% url 'search:month_seoul' %}">
-                                        <div class="fs-6 fw-bold">서울특별시</div>
-                                    </a>
-                                    </li>
-                                    <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{% url 'search:month_incheon' %}">
-                                        <div class="fs-6 fw-bold">인천광역시</div>
-                                    </a>
-                                    </li>
+                                  </li>
                                 </ul>
                             </div>
+                            <!-- keyword-region1 search  -->
+                            <div class="form-group">
+                                <h5>시/도
+                                {% if region1 %}
+                                <span class="text-muted">:{{region1}}</span>
+                                {% else%}
+                                <span class=text-muted">:</span>
+                                {% endif %}
+                                </h5>
+                                <select class="form-control" id="region1" name="region1" onchange='this.form.submit()'>
+                                    <option selected="true" disabled="disabled">시/도</option>
+                                    {% for select1 in reg1_list %}
+                                        <option value="{{select1}}">{{select1}}</option>
+                                    {% endfor %}
+                                </select>
+                                <!-- Divider-->
+                                <hr class="my-6" />
+                            </div>
                             <!-- keyword-region2 search  -->
-                            <div class="form-group my-2">
-                                <h5>시/군/구</h5>
-                                <select class="form-control" id="region2" name="region2">
+                            <div class="form-group">
+                                <h5>시/군/구
+                                {% if region2 %}
+                                <span class="text-muted">:{{region2}}</span>
+                                {% else%}
+                                <span class=text-muted">:</span>
+                                {% endif %}
+                                </h5>
+                                <select class="form-control" id="region2" name="region2" onchange="this.form.submit()">
                                         <option selected="true" disabled="disabled">시/군/구</option>
-                                            <option value="">시/도를 먼저 선택하세요.</option>
+                                        {% for select2 in reg2_list %}
+                                            <option value="{{select2}}">{{select2}}</option>
+                                        {% endfor %}
                                 </select>
                                 <!-- Divider-->
                                 <hr class="my-6" />
                             </div>
                             <!-- keyword-region3 search  -->
                             <div class="form-group">
-                                <h5>읍/면/동</h5>
+                                <h5>읍/면/동
+                                {% if region3 %}
+                                <span class="text-muted">:{{region3}}</span>
+                                {% else%}
+                                <span class=text-muted">:</span>
+                                {% endif %}
+                                </h5>
                                     <select class="form-control" id="region3" name="region3">
                                             <option selected="true" disabled="disabled">읍/면/동</option>
-                                                <option value="">시/도를 먼저 선택하세요.</option>
+                                            {% for select3 in reg3_list %}
+                                                <option value="{{select3|default_if_none:''}}">{{select3}}</option>
+                                            {% endfor %}
                                     </select>
                                     <!-- Divider-->
                                     <hr class="my-6" />
@@ -128,7 +146,7 @@
                                         <div class="row">
                                             <div class="col-4"> </div>
                                             <div class="col-2">
-                                                <button type="button" id="btn_search" class="btn btn-success btn-lg-4" style="width:300px" onclick="swal('검색','시/도를 먼저 선택해 주세요.','info')">
+                                                <button type="button" id="btn_search" class="btn btn-success btn-lg-4" style="width:300px" onclick="">
                                                     search
                                                 </button>
                                                 <p></p>
@@ -136,12 +154,46 @@
                                         </div>
                                     </div>
                             </div>
+                            <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+
+
+                            <!--search result table-->
+                            <table class="table" style="width:900px; margin:2px;">
+                                <thead>
+                                    <tr class="text-center thead-dark" style="vertical-align:middle;">
+                                        <th>건물 종류</th>
+                                        <th style="width:25%">건물 이름</th>
+                                        <th style="width:12%">전용면적(㎡)</th>
+                                        <th style="width:8%">년도</th>
+                                        <th style="width:8%">월</th>
+                                        <th>보증금(만원)</th>
+                                        <th>월세(만원)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                        {% for result in month_busan_list %}
+                                        <tr class="text-center">
+                                            <td>{{result.menuGubun}}</td>
+                                            <td>{{result.bldg_nm}}</td>
+                                            <td>{{result.bldg_area}}</td>
+                                            <td>{{result.year}}</td>
+                                            <td>{{result.deal_mm}}</td>
+                                            <td>{{result.sum_amt}}</td>
+                                            <td>{{result.rent_amt}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                </tbody>
+                            </table>
+
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!--search Form-->
+    <form id="searchForm2" method="get" action="{% url 'search:search' %}">
+
     </form>
 
 
@@ -156,7 +208,10 @@
 {% block script %}
 <script type="text/javascript">
 $(document).ready(function(){
-
+    $("#btn_search").on('click', function(){
+        $("#kw").val($("#region3").val());
+        $("#searchForm").submit();
+    });
 });
 </script>
 {% endblock%}

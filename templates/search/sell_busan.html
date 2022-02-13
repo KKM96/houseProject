@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('../../static/assets/img/house-search.jpg')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>Search</h1>
+                    <span class="subheading">부동산 가격 조회</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content-->
+<div class="container-fluid overflow-auto">
+    <div class="row">
+        <!--sidebar-->
+        <div class="col-lg-2" style="width: 450px;">
+            <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+                <a href="{% url 'search:search' %}" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+                  <svg class="bi me-2" width="30" height="24"></svg>
+                  <span class="fs-3 fw-bold">Search</span>
+                </a>
+                <ul class="list-unstyled ps-0">
+                  <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#search" aria-expanded="true">
+                          <h5>부동산 가격 검색</h5>
+                    </button>
+                    <div class="collapse" id="search">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <hr class="my-1" />
+                            <li><a href="{% url 'search:search' %}" class="link-dark rounded"><h6>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 전월세</h6></a></li>
+                            <li><a href="{% url 'search:sales' %}" class="link-dark rounded"><h6>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 매매</h6></a></li>
+                        </ul>
+                    </div>
+                  </li>
+                  <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#analysis" aria-expanded="false">
+                        <a href="{% url 'search:analysis' %}">
+                            <h5>부동산 가격 분석</h5>
+                        </a>
+                    </button>
+                  </li>
+                </ul>
+            </div>
+        </div>
+
+        <!--context-->
+        <div class="col" style="width:1050px">
+            <!--searchbar-->
+            <div class="card mb-4 mx-2" style="width:1050px">
+                <!-- Divider-->
+                <hr class="my-4" />
+                <span class="text-center">
+                    <h2 id="search_move">Search for 매매 건물</h2>
+                </span>
+                <div class="container px-4 px-lg-5">
+                    <form action="#search_move" method="get" id="searchForm" style="width:900px">
+                        <!-- keyword-trade search  -->
+                        <div class="form-group">
+                            <h5>거래형태</h5>
+                            <div class="form-control" name="trade">
+                                매매
+                            </div>
+                            <!-- Divider-->
+                            <hr class="my-6" />
+                        </div>
+                        <!--keyword-region1 select-->
+                        <div class="form-group">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="{% url 'search:sell_gyeonggi' %}">
+                                    <div class="fs-6 fw-bold">경기도</div>
+                                </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="{% url 'search:sell_daejeon' %}">
+                                        <div class="fs-6 fw-bold">대전광역시</div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{% url 'search:sell_busan' %}">
+                                    <div class="fs-6 fw-bold">부산광역시</div>
+                                </a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="{% url 'search:sell_seoul' %}">
+                                    <div class="fs-6 fw-bold">서울특별시</div>
+                                </a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="{% url 'search:sell_incheon' %}">
+                                    <div class="fs-6 fw-bold">인천광역시</div>
+                                </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- keyword-region2 search  -->
+                        <div class="form-group my-2">
+                            <h5>시/군/구
+                                {% if region2 %}
+                                <span class="text-muted">: {{region2}}</span>
+                                {% else%}
+                                <span class=text-muted">:</span>
+                                {% endif %}
+                            </h5>
+                            <select class="form-control" id="region2" name="region2" onchange="this.form.submit()">
+                                    <option selected="true" disabled="disabled">시/군/구</option>
+                                    {% for select2 in reg2_list %}
+                                        <option value="{{select2}}">{{select2}}</option>
+                                    {% endfor %}
+                            </select>
+                            <!-- Divider-->
+                            <hr class="my-6" />
+                        </div>
+                        <!-- keyword-region3 search  -->
+                        <div class="form-group">
+                            <h5>읍/면/동
+                                {% if region3 %}
+                                <span class="text-muted">:{{region3}}</span>
+                                {% else%}
+                                <span class=text-muted">:</span>
+                                {% endif %}
+                            </h5>
+                            <select class="form-control" id="region3" name="region3">
+                                    <option selected="true" disabled="disabled">읍/면/동</option>
+                                    {% for select3 in reg3_list %}
+                                        <option value="{{select3|default_if_none:''}}">{{select3}}</option>
+                                    {% endfor %}
+                            </select>
+                            <!-- Divider-->
+                            <hr class="my-6" />
+                            <div class="form-group-append justify-content-center">
+                                <div class="row">
+                                    <div class="col-4"> </div>
+                                    <div class="col-2">
+                                        <button type="button" id="btn_search" class="btn btn-success btn-lg-4" style="width:300px" onclick="">
+                                            search
+                                        </button>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-1" />
+                        <!--search result table-->
+                        <table class="table table-striped" style="width:900px; margin:2px;">
+                            <thead>
+                                <tr class="text-center thead-dark" style="vertical-align:middle;">
+                                    <th>건물 종류</th>
+                                    <th style="width:25%">건물 이름</th>
+                                    <th style="width:12%">전용면적(㎡)</th>
+                                    <th style="width:8%">년도</th>
+                                    <th style="width:8%">월</th>
+                                    <th>거래금액(만원)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    {% for result in sell_busan_list %}
+                                    <tr class="text-center">
+                                        <td>{{result.menuGubun}}</td>
+                                        <td>{{result.bldg_nm}}</td>
+                                        <td>{{result.bldg_area}}</td>
+                                        <td>{{result.year}}</td>
+                                        <td>{{result.deal_mm}}</td>
+                                        <td>{{result.sum_amt}}</td>
+                                    </tr>
+                                    {% endfor %}
+                            </tbody>
+                        </table>
+                        <!-- Divider-->
+                        <hr class="my-6" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block script %}
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#btn_search").on('click', function(){
+        $("#page").val(1);
+        $("#searchForm").submit();
+    });
+});
+</script>
+{% endblock%}
