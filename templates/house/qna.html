@@ -29,11 +29,12 @@
             <div class="fs-5 fw-bold">자주묻는 질문</div>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-            <div class="fs-5 fw-bold">1 : 1 문의</div>
-        </a>
-      </li>
+
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link active" aria-current="page" href="{% url 'qna:qna' %}">-->
+<!--            <div class="fs-5 fw-bold">1 : 1 문의</div>-->
+<!--        </a>-->
+<!--      </li>-->
     </ul>
     <p></p>
     <!--faq list-->
@@ -43,15 +44,14 @@
             <!--list 1 name-->
             <h2 class="accordion-header" id="headingOne">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                <div class="fs-5 text-primary"><strong>Q.</strong></div>&nbsp; &nbsp;<h5>  질문내용 1 </h5>
+                <div class="fs-5 text-primary"></div>&nbsp; &nbsp; <h5>  Q1. 이 사이트는 뭐하는 곳인가요?? </h5>
               </button>
             </h2>
             <!--list 1 content -->
             <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faq">
               <div class="accordion-body">
-                    <span class="fs-5 text-primary"><strong>A.</strong></span>&nbsp;&nbsp;<strong>xx는 어떻게 하나요?</strong><br>
                 <div class="text-muted fs-6 mx-4">&nbsp;
-                    ~이렇게 하시면 됩니다.
+                    주택 매매가격 및 전월세, 청약 등에 관심이 있으신 분들께 정보를 가르쳐드리는 사이트입니다. 사이트 상단 NEWS 버튼을 클릭하시면 주택 매매 관련 뉴스와 매매, 전월세, 청약에 관한 자세한 내용을 아실 수 있으며 SEARCH 버튼에서는 원하시는 지역의 주택 매매, 전월세 가격에 대한 정보를 알아가실 수 있습니다. TERMS에서는 부동산 관련 용어에 익숙지 않으신 분들께 단어 정보를, COMMUNITY에서 게시판을 이용하며 소통을 하실 수 있고 LOGIN 버튼에서 회원가입과 로그인을 통해 더 자세한 정보를 알아가실 수 있습니다.
                 </div>
               </div>
             </div>
@@ -61,15 +61,14 @@
             <!--list 2 name-->
             <h2 class="accordion-header" id="headingTwo">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                <div class="fs-5 text-primary"><strong>Q.</strong></div>&nbsp; &nbsp;<h5>  질문내용 2 </h5>
+                <div class="fs-5 text-primary"></div>&nbsp; &nbsp;<h5>  Q2. 통계자료 출처는 어떻게 되나요?? </h5>
               </button>
             </h2>
             <!--list 2 content -->
             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faq">
               <div class="accordion-body">
-                <span class="fs-5 text-primary"><strong>A.</strong></span>&nbsp;&nbsp;<strong>xx는 어떻게 하나요?</strong><br>
                 <div class="text-muted fs-6 mx-4">&nbsp;
-                    ~이렇게 하시면 됩니다.
+                    주택 매매, 전월세 관련 가격은 국토교통부 실거래가 공개 시스템에서 통계자료를 가져옵니다. (http://rt.molit.go.kr/) NEWS는 네이버와 다음에서 관련된 뉴스를 가져오고 똑똑하게 집 구하기에서 매매, 전월세, 청약에 관한 정보는 “네이버 부동산 사이트(https://land.naver.com/)” , 부동산 관련 용어는 “통계 설명자료(https://www.narastat.kr/metasvc/index.do)”에서 관련된 정보를 가져옵니다.
                 </div>
               </div>
             </div>
@@ -79,15 +78,14 @@
             <!--list 3 name-->
             <h2 class="accordion-header" id="headingThree">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                <div class="fs-5 text-primary"><strong>Q.</strong></div>&nbsp; &nbsp;<h5>  질문내용 3 </h5>
+                <div class="fs-5 text-primary"></div>&nbsp; &nbsp;<h5>  Q3. 나와있는 자료는 계속 업데이트가 되나요?? </h5>
               </button>
             </h2>
-            <!--list 2 content -->
+            <!--list 3 content -->
             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faq">
               <div class="accordion-body">
-                <span class="fs-5 text-primary"><strong>A.</strong></span>&nbsp;&nbsp;<strong>xx는 어떻게 하나요?</strong><br>
                 <div class="text-muted fs-6 mx-4">&nbsp;
-                    ~이렇게 하시면 됩니다.
+                    주기적인 업데이트 진행을 통해 최신 정보를 입력하고 있습니다.
                 </div>
               </div>
             </div>
@@ -97,15 +95,14 @@
             <!--list 4 name-->
             <h2 class="accordion-header" id="headingFour">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                <div class="fs-5 text-primary"><strong>Q.</strong></div>&nbsp; &nbsp;<h5>  질문내용 4 </h5>
+                <div class="fs-5 text-primary"></div>&nbsp; &nbsp;<h5>  Q4. 회원을 탈퇴하려면 어떻게 하나요? </h5>
               </button>
             </h2>
-            <!--list 2 content -->
+            <!--list 4 content -->
             <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faq">
               <div class="accordion-body">
-                <span class="fs-5 text-primary"><strong>A.</strong></span>&nbsp;&nbsp;<strong>xx는 어떻게 하나요?</strong><br>
                 <div class="text-muted fs-6 mx-4">&nbsp;
-                    ~이렇게 하시면 됩니다.
+                    이메일로 연락을 주시면 탈퇴 조취시켜 드리겠습니다. (관리자 이메일: kimyj3718@gmail.com)
                 </div>
               </div>
             </div>
@@ -115,15 +112,14 @@
             <!--list 5 name-->
             <h2 class="accordion-header" id="headingFive">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                <div class="fs-5 text-primary"><strong>Q.</strong></div>&nbsp; &nbsp;<h5>  질문내용 5 </h5>
+                <div class="fs-5 text-primary"></div>&nbsp; &nbsp;<h5>  Q5. 회원가입 시 혜택은 무엇이 있나요? </h5>
               </button>
             </h2>
-            <!--list 2 content -->
+            <!--list 5 content -->
             <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faq">
               <div class="accordion-body">
-                <span class="fs-5 text-primary"><strong>A.</strong></span>&nbsp;&nbsp;<strong>xx는 어떻게 하나요?</strong><br>
                 <div class="text-muted fs-6 mx-4">&nbsp;
-                    ~이렇게 하시면 됩니다.
+                    커뮤니티 이용이 가능하고 QnA 답변을 좀 더 빠르게 받아보실 수 있으며 빠른 피드백을 받아보실 수 있습니다. 또한 부동산 매매, 전월세, 청약과 관련한 최신 정보를 빠르게 받아보실 수 있습니다.
                 </div>
               </div>
             </div>
@@ -133,15 +129,66 @@
             <!--list 6 name-->
             <h2 class="accordion-header" id="headingSixth">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSixth" aria-expanded="false" aria-controls="collapseSixth">
-                <div class="fs-5 text-primary"><strong>Q.</strong></div>&nbsp; &nbsp;<h5>  질문내용 6 </h5>
+                <div class="fs-5 text-primary"></div>&nbsp; &nbsp;<h5>  Q6. 주택청약은 어떻게 신청하나요?? </h5>
               </button>
             </h2>
             <!--list 6 content -->
             <div id="collapseSixth" class="accordion-collapse collapse" aria-labelledby="headingSixth" data-bs-parent="#faq">
               <div class="accordion-body">
-                <span class="fs-5 text-primary"><strong>A.</strong></span>&nbsp;&nbsp;<strong>xx는 어떻게 하나요?</strong><br>
                 <div class="text-muted fs-6 mx-4">&nbsp;
-                    ~이렇게 하시면 됩니다.
+                    사이트 상단 오른쪽에서 “NEWS → 똑똑하게 집 구하기 → 청약” 순서로 눌러서 들어가시면 주택청약과 관련해서 자세히 알아가실 수 있습니다.
+                </div>
+              </div>
+            </div>
+        </div>
+        <!--list 7-->
+        <div class="accordion-item">
+            <!--list 7 name-->
+            <h2 class="accordion-header" id="headingSeven">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseFive">
+                <div class="fs-5 text-primary"></div>&nbsp; &nbsp;<h5>  Q7.  공개대상 및 공개내용은 어떻게 되나요?? </h5>
+              </button>
+            </h2>
+            <!--list 7 content -->
+            <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#faq">
+              <div class="accordion-body">
+                <div class="text-muted fs-6 mx-4">&nbsp;
+                    실거래가 공개 대상은 주택(아파트, 다세대/연립, 단독/다가구), 오피스텔 등 건물을 매매 거래 및 전월세에 대한 정보를 얻고 싶어 하시는 분 모두이며 공개 내용은 주택(아파트, 다세대/연립, 단독/다가구), 오피스텔 등의 건물 매매 내용, 전월세 내용을 주로 하고 있습니다.
+                </div>
+              </div>
+            </div>
+        </div>
+        <!--list 8-->
+        <div class="accordion-item">
+            <!--list 8 name-->
+            <h2 class="accordion-header" id="headingEight">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseFive">
+                <div class="fs-5 text-primary"></div>&nbsp; &nbsp;<h5>  Q8. 집값은 왜 올라가나요?? </h5>
+              </button>
+            </h2>
+            <!--list 8 content -->
+            <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#faq">
+              <div class="accordion-body">
+                <div class="text-muted fs-6 mx-4">&nbsp;
+                    무수히 많은 이유가 있겠지만 대표적인 이유로는 희소성 때문이라고 생각합니다. 아무래도 우리나라는 대부분의 인프라가 ‘서울’을 중심으로 잘 짜여 있는데 그곳으로 많은 사람들이 몰리다 보니 좁은 구역에 많은 사람들이 있게 되고 한정된 자원인 집, 땅의 가격은 자연스럽게 올라가게 됩니다. 이외에도 서울의 많은 수요에 비해 공급이 부족, 주택 가구 수의 증가 등 무수히 많은 이유로 인해 집값이 올라가게 됩니다.
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <!--list 9-->
+        <div class="accordion-item">
+            <!--list 9 name-->
+            <h2 class="accordion-header" id="headingnine">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsenine" aria-expanded="false" aria-controls="collapsenine">
+                <div class="fs-5 text-primary"><strong></strong></div>&nbsp; &nbsp;<h5>  1 : 1 문의사항 </h5>
+              </button>
+            </h2>
+            <!--list 9 content -->
+            <div id="collapsenine" class="accordion-collapse collapse" aria-labelledby="headingnine" data-bs-parent="#faq">
+              <div class="accordion-body">
+                    <div class="text-muted fs-6 mx-4">&nbsp;
+                    "kimyj3718@gmail.com" 이 메일로 1:1 문의사항 및 질문사항을 보내주시면 그에 대한 답변을 보내드리겠습니다.
                 </div>
               </div>
             </div>
