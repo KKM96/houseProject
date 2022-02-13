@@ -1,12 +1,11 @@
 from django.db import models
-import pandas as pd
 
 # Create your models here.
 
 
 class Terms(models.Model):
-    Term_name = models.CharField(max_length=1000)
-    Term_def = models.CharField(max_length=2000)
+    Term_name = models.CharField(max_length=100)
+    Term_def = models.CharField(max_length=1000)
 
     class Meta:
         managed = False
