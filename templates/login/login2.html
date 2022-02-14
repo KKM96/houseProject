@@ -36,6 +36,8 @@
             <main class="form-signin my-5">
               <form method="post" class="post-form" action="{% url 'login:login' %}">
                 {% csrf_token %}
+                  <!--로그인 성공 후 이동되는 URL-->
+                <input type="hidden" name="next" value="{{ next }}">
                 {% include "form_errors.html" %}
                 <h1 class="h3 mb-3 fw-normal">로그인</h1>
                 <!--UserID-->

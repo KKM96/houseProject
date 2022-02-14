@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('../../static/assets/img/house-community.jpg')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>Community</h1>
+                    <span class="subheading">내 집 마련 Community</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content-->
+
+<div class="container-fluid">
+    <div class="row">
+        <!--sidebar-->
+        <div class="col-lg-2" style="width: 450px;">
+            <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+                <a href="{% url 'community:community' %}" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+                  <svg class="bi me-2" width="30" height="24"></svg>
+                  <span class="fs-3 fw-bold">Community</span>
+                </a>
+                <ul class="list-unstyled ps-0">
+                  <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#region" aria-expanded="false">
+                            <h5>지역 자유게시판</h5>
+                    </button><p></p>
+                    <div class="collapse" id="region">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="{% url 'community:community' %}" class="link-dark rounded"><h6>　- 지역무관</h6></a></li>
+                            <li><a href="{% url 'community:seoul' %}" class="link-dark rounded"><h6>　- 서울/인천/경기도</h6></a></li>
+                            <li><a href="#" class="link-dark rounded"><h6>　- 부산/대구/울산/경상도</h6></a></li>
+                            <li><a href="#" class="link-dark rounded"><h6>　- 광주/전라도</h6></a></li>
+                            <li><a href="#" class="link-dark rounded"><h6>　- 대전/세종/충청도</h6></a></li>
+                            <li><a href="#" class="link-dark rounded"><h6>　- 강원도</h6></a></li>
+                            <li><a href="#" class="link-dark rounded"><h6>　- 제주도</h6></a></li>
+                        </ul>
+                    </div>
+                  </li>
+                  <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#board" aria-expanded="false">
+                            <h5>정보 공유</h5>
+                    </button><p></p>
+                      <div class="collapse" id="board">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="#" class="link-dark rounded"><h6>　- 부동산 정보 공유</h6></a></li>
+                            <li><a href="#" class="link-dark rounded"><h6>　- 회원간 묻고 답하기</h6></a></li>
+                        </ul>
+                    </div>
+                  </li>
+                </ul>
+            </div>
+        </div>
+        <!--context-->
+        <div class="col" style="width:1100px">
+            <div class="container px-4 px-lg-5">
+                <!--게시판제목-->
+                <div class="row gx-4 gx-lg-5 justify-content-left">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <h2>{{ post.subject }}</h2>
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                        <h6>{{ post.create_date }}</h6>
+                    </div>
+                </div>
+
+                <!--게시글 내용-->
+                <div class="card px-4 px-lg-5">
+                    <div class="card-text" style="white-space: pre-line;">
+                        {{ post.content }}
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <div class="badge badge-light p-2">
+                            {{ post.create_date }}
+                        </div>
+                    </div>
+                </div>
+                <p></p>
+                <!--답변수-->
+                <h5 class="border-bottom my-3 py-2">
+                {{ post.answer_set.count }}개의 답글이 있습니다.
+                </h5>
+                <!--답변내용-->
+                {% for answer in post.answer_set.all %}
+                <div class="card-body">
+                    <div class="card-text" style="white-space: pre-line;">
+                        {{ answer.content }}
+                    </div>
+                    <h6>{{ answer.create_date }}</h6>
+                </div>
+                {% endfor %}
+
+                <!--답변 등록-->
+                <form action="{% url 'community:answer_create' post.id %}" method="post" class="my-3">
+                {% csrf_token %}
+                {% if form.error %}
+                <div class="alert alert-danger" role="alert">
+                {% for field in form %}
+                    {% if field.errors %}
+                    <strong>{{ field.label }}</strong>
+                    {{ field.errors }}
+                    {% endif %}
+                {% endfor %}
+                </div>
+                {% endif %}
+                    <div class="form-group">
+                        <textarea name="content" id="content"
+                                  {% if not user.is_authenticated %}disabled{% endif %}
+                                  class="form-control" rows="5"></textarea>
+                    </div>
+                    <input type="submit" value="답변등록" class="btn btn-primary">
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
