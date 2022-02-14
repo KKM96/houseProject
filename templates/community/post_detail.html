@@ -68,7 +68,7 @@
                         <h2>{{ post.subject }}</h2>
                     <!-- Divider-->
                     <hr class="my-4" />
-                        <h6>{{ post.create_date }}</h6>
+
                     </div>
                 </div>
 
@@ -78,10 +78,12 @@
                         {{ post.content }}
                     </div>
                     <div class="d-flex justify-content-end">
-                        <div class="badge badge-light p-2">
-                            {{ post.create_date }}
+                        <div class="badge badge-light p-2 text-left text-black">
+                            <div class="mb-2">{{ post.author.username }}</div>
+                            <div>{{ post.create_date }}</div>
                         </div>
                     </div>
+
                 </div>
                 <p></p>
                 <!--답변수-->
@@ -90,11 +92,16 @@
                 </h5>
                 <!--답변내용-->
                 {% for answer in post.answer_set.all %}
-                <div class="card-body">
+                <div class="card px-4 px-lg-5">
                     <div class="card-text" style="white-space: pre-line;">
                         {{ answer.content }}
                     </div>
-                    <h6>{{ answer.create_date }}</h6>
+                    <div class="d-flex justify-content-end">
+                        <div class="badge badge-light p-2 text-left text-black">
+                            <div class="mb-2">{{ answer.author.username }}</div>
+                            <div>{{ answer.create_date }}</div>
+                        </div>
+                    </div>
                 </div>
                 {% endfor %}
 
