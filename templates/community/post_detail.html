@@ -68,7 +68,6 @@
                         <h2>{{ post.subject }}</h2>
                     <!-- Divider-->
                     <hr class="my-4" />
-                        <h6>{{ post.create_date }}</h6>
                     </div>
                 </div>
 
@@ -78,10 +77,19 @@
                         {{ post.content }}
                     </div>
                     <div class="d-flex justify-content-end">
-                        <div class="badge badge-light p-2">
-                            {{ post.create_date }}
+                        <div class="badge badge-light p-2 text-left text-black">
+                            <div class="mb-2">{{ post.author.username }}</div>
+                            <div>{{ post.create_date }}</div>
                         </div>
                     </div>
+                    {% if request.user == post.author %}
+                    <div class="my-3">
+                        <a href="{% url 'community:post_modify' post.id %}"
+                           class="btn btn-sm btn-outline-secondary">수정</a>
+                        <a href="#" class="delete btn btn-sm btn-outline-secondary"
+                        data-uri="{% url 'community:post_delete' post.id %}">삭제</a>
+                    </div>
+                    {% endif %}
                 </div>
                 <p></p>
                 <!--답변수-->
@@ -90,11 +98,24 @@
                 </h5>
                 <!--답변내용-->
                 {% for answer in post.answer_set.all %}
-                <div class="card-body">
+                <div class="card px-4 px-lg-5">
                     <div class="card-text" style="white-space: pre-line;">
                         {{ answer.content }}
                     </div>
-                    <h6>{{ answer.create_date }}</h6>
+                    <div class="d-flex justify-content-end">
+                        <div class="badge badge-light p-2 text-lect text-black">
+                            <div class="mb-2">{{ answer.author.username }}</div>
+                            <div>{{ answer.create_date }}</div>
+                        </div>
+                    </div>
+                    {% if request.user == answer.author %}
+                    <div class="my-3">
+                        <a href="{% url 'community:answer_modify' answer.id %}"
+                           class="btn btn-sm btn-outline-secondary">수정</a>
+                        <a href="#" class="delete btn btn-sm btn-outline-secondary"
+                        data-uri="{% url 'community:answer_delete' answer.id %}">삭제</a>
+                    </div>
+                    {% endif %}
                 </div>
                 {% endfor %}
 
@@ -123,5 +144,15 @@
         </div>
     </div>
 </div>
-
+{% endblock %}
+{% block script %}
+<script type = "text/javascript">
+    $(document).ready(function(){
+        $(".delete").on('click', function(){
+        if(confirm("정말로 삭제하시겠습니까?")){
+            location.href = $(this).data('uri');
+            }
+        });
+    });
+</script>
 {% endblock %}
