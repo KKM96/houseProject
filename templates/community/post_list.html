@@ -21,7 +21,7 @@
 <div class="container-fluid">
     <div class="row">
         <!--sidebar-->
-        <div class="col-lg-2" style="width: 450px;">
+        <div class="col-lg-2" style="width: 350px;">
             <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
                 <a href="{% url 'community:community' %}" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
                   <svg class="bi me-2" width="30" height="24"></svg>
@@ -36,24 +36,6 @@
                     <div class="collapse" id="region">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                             <li><a href="{% url 'community:community' %}" class="link-dark rounded"><h6>　- 지역 자유게시판</h6></a></li>
-                            <li><a href="{% url 'community:seoul' %}" class="link-dark rounded"><h6>　- 서울/인천/경기도</h6></a></li>
-                            <li><a href="#" class="link-dark rounded"><h6>　- 부산/대구/울산/경상도</h6></a></li>
-                            <li><a href="#" class="link-dark rounded"><h6>　- 광주/전라도</h6></a></li>
-                            <li><a href="#" class="link-dark rounded"><h6>　- 대전/세종/충청도</h6></a></li>
-                            <li><a href="#" class="link-dark rounded"><h6>　- 강원도</h6></a></li>
-                            <li><a href="#" class="link-dark rounded"><h6>　- 제주도</h6></a></li>
-                        </ul>
-                    </div>
-                  </li>
-                  <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                            data-bs-target="#board" aria-expanded="false">
-                            <h5>정보 공유</h5>
-                    </button><p></p>
-                      <div class="collapse" id="board">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded"><h6>　- 부동산 정보 공유</h6></a></li>
-                            <li><a href="#" class="link-dark rounded"><h6>　- 회원간 묻고 답하기</h6></a></li>
                         </ul>
                     </div>
                   </li>
@@ -173,7 +155,7 @@
                     {% endif %}
                 </ul>
                 <!--페이징 처리 끝-->
-                <a href="{% url 'community:post_create' %}" class="btn btn-primary">
+                <a href="{% url 'community:post_create' %}" class="btn btn-secondary">
                 게시글 등록하기
                 </a>
             </div>
