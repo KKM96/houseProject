@@ -5,4 +5,8 @@ app_name = 'community'
 
 urlpatterns = [
     path('', views.community, name='community'),
+    path('<int:post_id>/', views.detail, name='detail'),
+    path('answer/create/<int:post_id>/', views.answer_create, name='answer_create'),
+    path('post/create/', views.post_create, name='post_create'),
+    path('seoul/', views.seoul, name='seoul'),
 ]

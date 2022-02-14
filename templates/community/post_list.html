@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+{% load community_filter %}
+
+{% block content %}
+{% load static %}
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('../../static/assets/img/house-community.jpg')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>Community</h1>
+                    <span class="subheading">내 집 마련 Community</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content-->
+
+<div class="container-fluid">
+    <div class="row">
+        <!--sidebar-->
+        <div class="col-lg-2" style="width: 450px;">
+            <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+                <a href="{% url 'community:community' %}" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+                  <svg class="bi me-2" width="30" height="24"></svg>
+                  <span class="fs-3 fw-bold">Community</span>
+                </a>
+                <ul class="list-unstyled ps-0">
+                  <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#region" aria-expanded="false">
+                            <h5>지역 자유게시판</h5>
+                    </button><p></p>
+                    <div class="collapse" id="region">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="{% url 'community:community' %}" class="link-dark rounded"><h6>　- 지역 자유게시판</h6></a></li>
+                            <li><a href="{% url 'community:seoul' %}" class="link-dark rounded"><h6>　- 서울/인천/경기도</h6></a></li>
+                            <li><a href="#" class="link-dark rounded"><h6>　- 부산/대구/울산/경상도</h6></a></li>
+                            <li><a href="#" class="link-dark rounded"><h6>　- 광주/전라도</h6></a></li>
+                            <li><a href="#" class="link-dark rounded"><h6>　- 대전/세종/충청도</h6></a></li>
+                            <li><a href="#" class="link-dark rounded"><h6>　- 강원도</h6></a></li>
+                            <li><a href="#" class="link-dark rounded"><h6>　- 제주도</h6></a></li>
+                        </ul>
+                    </div>
+                  </li>
+                  <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#board" aria-expanded="false">
+                            <h5>정보 공유</h5>
+                    </button><p></p>
+                      <div class="collapse" id="board">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="#" class="link-dark rounded"><h6>　- 부동산 정보 공유</h6></a></li>
+                            <li><a href="#" class="link-dark rounded"><h6>　- 회원간 묻고 답하기</h6></a></li>
+                        </ul>
+                    </div>
+                  </li>
+                </ul>
+            </div>
+        </div>
+        <!--context-->
+        <div class="col" style="width:1100px">
+            <!--게시판제목-->
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-left">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <h2>자유게시판</h2>
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                    </div>
+                </div>
+            </div>
+            <!--테이블-->
+            <div class = "container my-5">
+                <table class = "table">
+                    <thead>
+                    <tr class="thead-dark">
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>작성일시</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% if post_list %}
+                    {% for post in post_list %}
+                    <tr>
+                        <td>{{ post_list.paginator.count|sub:post_list.start_index|sub:forloop.counter0|add:1 }}</td>
+                        <td>
+                            <a href="{% url 'community:detail' post.id %}">{{ post.subject }}</a>
+                            {% if post.answer_set.count > 0 %}
+                            <span class="text=danger small ml-3">
+                                {{ post.answer_set.count }}
+                            </span>
+                            {% endif %}
+                        </td>
+                        <td>{{ post.create_date }}</td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td colspan="3">이 게시판에는 아직 글이 없습니다.</td>
+                    </tr>
+                    {% endif %}
+                    </tbody>
+                </table>
+                <!--페이징 처리 시작-->
+                <ul class="pagination justify-content-center">
+                    <!--처음으로-->
+                    {% if post_list.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1">처음</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" tabindex="-1" aria-disabled="true" href="#">처음</a>
+                    </li>
+                    {% endif %}
+                    <!--이전 페이지-->
+                    {% if post_list.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ post_list.previous_page_number }}">이전</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+                    </li>
+                    {% endif %}
+                    <!--페이지 리스트-->
+                    {% for page_number in post_list.paginator.page_range %}
+                    {% if page_number >= post_list.number|add:-2 and page_number <= post_list.number|add:2 %}
+                        {% if page_number == post_list.number %}
+                        <li class="page-item active" aria-current="page">
+                            <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                        </li>
+                        {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                    <!--다음페이지-->
+                    {% if post_list.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ post_list.next_page_number }}">다음</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+                    </li>
+                    {% endif %}
+                    <!--끝으로-->
+                    {% if post_list.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ post_list.paginator.num_pages }}">끝</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" tabindex="-1" aria-disabled="true" href="#">끝</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                <!--페이징 처리 끝-->
+                <a href="{% url 'community:post_create' %}" class="btn btn-primary">
+                게시글 등록하기
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
