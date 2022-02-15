@@ -19,7 +19,7 @@
 <div class="container-fluid">
     <div class="row">
         <!--sidebar-->
-        <div class="col-lg-2" style="width: 450px;">
+        <div class="col-lg-2" style="width: 350px;">
             <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
                 <a href="{% url 'search:search' %}" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
                   <svg class="bi me-2" width="30" height="24"></svg>
@@ -55,6 +55,100 @@
             <div class="jumbotron mx-4">
                 <h3>부동산 분석</h3><p></p><p></p>
                 <hr class="my-2">
+            </div>
+            <!--Content link carousel-->
+            <div id="carouselExampleDark" class="carousel carousel-dark slide mx-5" data-bs-ride="carousel" style="width:900px; height:580px;">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="10000">
+                      <img src="{% static '/assets/img/acar_1.png'%}" class="d-block w-100" alt="...">
+                      <div class="carousel-caption d-none d-md-block">
+                        <h5>Data analysis 1</h5>
+                        <h6>2021년 12월 전국 아파트 거래에서 가장 많이 팔렸던 층 수는? <a href="#data_analysis_1">click</a> </h6>
+                      </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="2000">
+                      <img src="{% static '/assets/img/acar_2.png'%}" class="d-block w-100" alt="...">
+                      <div class="carousel-caption d-none d-md-block">
+                        <h5>Data analysis 2</h5>
+                        <h6>2021년 12월 전국 아파트 거래에서 가장 많이 팔렸던 평 수는? <a href="#data_analysis_2">click</a> </h6>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img src="{% static '/assets/img/acar_3_1.png'%}" class="d-block w-100" alt="...">
+                      <div class="carousel-caption d-none d-md-block">
+                        <h5>Data analysis 3</h5>
+                        <h6>2021년 경기도 신도시 지역(판교,동탄,운정)의 평균 / 최대 / 최소 거래가는?<a href="#data_analysis_3">click</a> </h6>
+                      </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <!-- Divider-->
+            <hr class="my-4" />
+            <!--content-->
+            <div class="container">
+                <div id="data_analysis_1" style="width:900px;">
+                    <div class="jumbotron mx-4">
+                        <h3>Data analysis 1</h3>
+                        <hr class="my-4">
+                    </div>
+                    <h5><span class="text-muted mx-4">2021년 12월 전국 아파트 거래에서 가장 많이 팔렸던 층 수는?</span></h5>
+                    <img src="{% static '/assets/img/da_1_1.png'%}" style="width:900px; height:580px;">
+                    <img src="{% static '/assets/img/da_1_2.png'%}" style="width:900px; height:580px;">
+                </div>
+                <div id="data_analysis_2" style="width:900px;">
+                    <div class="jumbotron mx-4">
+                        <h3>Data analysis 2</h3>
+                        <hr class="my-4">
+                    </div>
+                    <h5><span class="text-muted mx-4">2021년 12월 전국 아파트 거래에서 가장 많이 팔렸던 평 수는?</span></h5>
+                    <img src="{% static '/assets/img/da_2_1.png'%}" style="width:900px; height:580px;">
+                    <img src="{% static '/assets/img/da_2_2.png'%}" style="width:900px; height:580px;">
+                </div>
+                <div id="data_analysis_3" style="width:900px;">
+                    <div class="jumbotron mx-4">
+                        <h3>Data analysis 3</h3>
+                        <hr class="my-4">
+                    </div>
+                    <h5><span class="text-muted mx-4">2021년 경기도 신도시 지역(판교,동탄,운정)의 평균 / 최대 / 최소 거래가는?</span></h5>
+                    <h6 mx-4> - 판교 신도시 [ 경기도 성남시 분당구 판교동 ]</h6>
+                    <h6 mx-4 class="text-muted"> #1-1. 단독다가구 월세</h6>
+                    <img src="{% static '/assets/img/da_3_1_1.png'%}" style="width:900px; height:580px;">
+                    <h6 mx-4 class="text-muted"> #1-2. 단독다가구 전세</h6>
+                    <img src="{% static '/assets/img/da_3_1_2.png'%}" style="width:900px; height:580px;">
+                    <h6 mx-4 class="text-muted"> #1-3. 단독다가구 매매</h6>
+                    <img src="{% static '/assets/img/da_3_1_3.png'%}" style="width:900px; height:580px;">
+                    <!--divider-->
+                    <hr class="my-4">
+                    <h6 mx-4> - 동탄 신도시 [ 경기도 화성시 반송동 ]</h6>
+                    <h6 mx-4 class="text-muted"> #1-1. 단독다가구 월세</h6>
+                    <img src="{% static '/assets/img/da_3_2_1.png'%}" style="width:900px; height:580px;">
+                    <h6 mx-4 class="text-muted"> #1-2. 단독다가구 전세</h6>
+                    <img src="{% static '/assets/img/da_3_2_2.png'%}" style="width:900px; height:580px;">
+                    <h6 mx-4 class="text-muted"> #1-3. 단독다가구 매매</h6>
+                    <img src="{% static '/assets/img/da_3_2_3.png'%}" style="width:900px; height:580px;">
+                    <!--divider-->
+                    <hr class="my-4">
+                    <h6 mx-4> - 운정 신도시 [ 경기도 파주시 와동동 ]</h6>
+                    <h6 mx-4 class="text-muted"> #1-1. 단독다가구 월세</h6>
+                    <img src="{% static '/assets/img/da_3_3_1.png'%}" style="width:900px; height:580px;">
+                    <h6 mx-4 class="text-muted"> #1-2. 단독다가구 전세</h6>
+                    <img src="{% static '/assets/img/da_3_3_2.png'%}" style="width:900px; height:580px;">
+                    <h6 mx-4 class="text-muted"> #1-3. 단독다가구 매매</h6>
+                    <img src="{% static '/assets/img/da_3_3_3_1.png'%}" style="width:900px; height:580px;">
+                </div>
             </div>
         </div>
     </div>
