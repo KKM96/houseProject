@@ -22,6 +22,8 @@
         <div class="col-md-10 col-lg-8 col-xl-7">
             <div class="row justify-content-end my-3" >
                 <a href="{% url 'terms:terms' %}" style="text-center"><h3>Terms Home</h3></a>
+                <!--divider-->
+                <hr class="my-4" />
                 <div class="col-4 input-group">
                     <input type="text" class="form-control kw"
                            value="{{ kw|default_if_none:'' }}">

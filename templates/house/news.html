@@ -9,7 +9,7 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                     <h1>News</h1>
-                    <span class="subheading">부동산 관련 뉴스</span>
+                    <span class="subheading">부동산 관련 뉴스 및 팁</span>
                 </div>
             </div>
         </div>
@@ -39,9 +39,9 @@
                     </button><p></p>
                     <div class="collapse" id="howto-collapse">
                       <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="{% url 'news:htsale' %}" class="link-dark rounded"><h6>- 매매</h6></a></li>
-                        <li><a href="{% url 'news:htmonth' %}" class="link-dark rounded"><h6>- 전월세</h6></a></li>
-                        <li><a href="{% url 'news:htsub' %}" class="link-dark rounded"><h6>- 청약</h6></a></li>
+                        <li><a href="{% url 'news:htsale' %}" class="link-dark rounded"><h6>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 매매</h6></a></li>
+                        <li><a href="{% url 'news:htmonth' %}" class="link-dark rounded"><h6>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 전월세</h6></a></li>
+                        <li><a href="{% url 'news:htsub' %}" class="link-dark rounded"><h6>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 청약</h6></a></li>
                       </ul>
                     </div>
                   </li>
@@ -49,12 +49,116 @@
             </div>
         </div>
         <!--content-->
-
-
-
-
-        <!-- Divider-->
-        <hr class="my-4" />
+        <div class="col-lg-2 my-2" style="width:1200px">
+            <!--content header-->
+            <div class="jumbotron mx-4">
+                <h3>News</h3><p></p><p></p>
+                <hr class="my-2">
+            </div>
+            <!--news content row1-->
+            <div class="row" id="row1">
+                <div class="col" id="col1-1" style="width:320px;">
+                    <div class="card mx-3 my-3" style="width: 280px;">
+                      <img src="{% static '/assets/img/news/news1.png'%}" class="card-img-top">
+                      <div class="card-body">
+                        <h5 class="card-title">News 1</h5>
+                        <p class="card-text">"쏟아지는 청년·신혼부부 주거혜택 찾으세요"…서울시, 가이드북 발간</p>
+                        <a href="https://land.naver.com/news/newsRead.naver?type=headline&bss_ymd=&prsco_id=277&arti_id=0005043776" target="_blank" class="btn btn-secondary">뉴스 더보기</a>
+                      </div>
+                    </div>
+                </div>
+                <div class="col" id="col1-2" style="width:320px;">
+                    <div class="card mx-3 my-3" style="width: 280px;">
+                      <img src="{% static '/assets/img/news/news2.png'%}" class="card-img-top">
+                      <div class="card-body">
+                        <h5 class="card-title">News 2</h5>
+                        <p class="card-text">공공이 직접 재개발한다던 13만6000가구…국회 '문턱'에 1년째 '표류'</p>
+                        <a href="https://land.naver.com/news/newsRead.naver?type=headline&bss_ymd=&prsco_id=421&arti_id=0005902578" target="_blank" class="btn btn-secondary">뉴스 더보기</a>
+                      </div>
+                    </div>
+                </div>
+                <div class="col" id="col1-3" style="width:320px;">
+                    <div class="card mx-3 my-3" style="width: 280px;">
+                      <img src="{% static '/assets/img/news/news3.png'%}" class="card-img-top">
+                      <div class="card-body">
+                        <h5 class="card-title">News 3</h5>
+                        <p class="card-text">가파른 상승세 보이는 주담대 금리…6% 육박, 연말엔 7% 가나</p>
+                        <a href="https://land.naver.com/news/newsRead.naver?type=headline&bss_ymd=&prsco_id=243&arti_id=0000022774" target="_blank" class="btn btn-secondary">뉴스 더보기</a>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <!--news content row2-->
+            <div class="row" id="row2">
+                <div class="col" id="col2-1" style="width:320px;">
+                    <div class="card mx-3 my-3" style="width: 280px;">
+                      <img src="{% static '/assets/img/news/news4.png'%}" class="card-img-top">
+                      <div class="card-body">
+                        <h5 class="card-title">News 4</h5>
+                        <p class="card-text">집값 하향 안정세 본격화… 5년 이하 신축 조정 ‘뚜렷’</p>
+                        <a href="https://land.naver.com/news/newsRead.naver?type=headline&bss_ymd=&prsco_id=005&arti_id=0001505171" target="_blank" class="btn btn-secondary">뉴스 더보기</a>
+                      </div>
+                    </div>
+                </div>
+                <div class="col" id="col2-2" style="width:320px;">
+                    <div class="card mx-3 my-3" style="width: 280px;">
+                      <img src="{% static '/assets/img/news/news5.png'%}" class="card-img-top">
+                      <div class="card-body">
+                        <h5 class="card-title">News 5</h5>
+                        <p class="card-text">강북구 "부동산 중개사무소 개설 등록 하루면 OK"</p>
+                        <a href="https://land.naver.com/news/newsRead.naver?type=headline&bss_ymd=&prsco_id=001&arti_id=0012982050" target="_blank" class="btn btn-secondary">뉴스 더보기</a>
+                      </div>
+                    </div>
+                </div>
+                <div class="col" id="col2-3" style="width:320px;">
+                    <div class="card mx-3 my-3" style="width: 280px;">
+                      <img src="{% static '/assets/img/news/news6.png'%}" class="card-img-top">
+                      <div class="card-body">
+                        <h5 class="card-title">News 6</h5>
+                        <p class="card-text">경기도 지방세수 연평균 9.3% 증가 전망…취득세는 10.1%↑</p>
+                        <a href="https://land.naver.com/news/newsRead.naver?type=headline&bss_ymd=&prsco_id=001&arti_id=0012982605" target="_blank" class="btn btn-secondary">뉴스 더보기</a>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <!--news content row3-->
+            <div class="row" id="row3">
+                <div class="col" id="col3-1" style="width:320px;">
+                    <div class="card mx-3 my-3" style="width: 280px;">
+                      <img src="{% static '/assets/img/news/news7.png'%}" class="card-img-top">
+                      <div class="card-body">
+                        <h5 class="card-title">News 7</h5>
+                        <p class="card-text">치솟은 전셋값에…희망고문된 LH전세임대</p>
+                        <a href="https://land.naver.com/news/newsRead.naver?type=headline&bss_ymd=&prsco_id=016&arti_id=0001950544" target="_blank" class="btn btn-secondary">뉴스 더보기</a>
+                      </div>
+                    </div>
+                </div>
+                <div class="col" id="col3-2" style="width:320px;">
+                    <div class="card mx-3 my-3" style="width: 280px;">
+                      <img src="{% static '/assets/img/news/news8.png'%}" class="card-img-top">
+                      <div class="card-body">
+                        <h5 class="card-title">News 8</h5>
+                        <p class="card-text">서울아파트 월세 낀 거래 작년 7만1천여건…통계 집계 이래 최다</p>
+                        <a href="https://land.naver.com/news/newsRead.naver?type=headline&bss_ymd=&prsco_id=001&arti_id=0012982059" target="_blank" class="btn btn-secondary">뉴스 더보기</a>
+                      </div>
+                    </div>
+                </div>
+                <div class="col" id="col3-3" style="width:320px;">
+                    <div class="card mx-3 my-3" style="width: 280px;">
+                      <img src="{% static '/assets/img/news/news9.png'%}" style="width:277px; height:207px;" class="card-img-top">
+                      <div class="card-body">
+                        <h5 class="card-title">News 9</h5>
+                        <p class="card-text">집값 하락 전환에도..10명 중 4명 "올해 부동산 투자 예정"</p>
+                        <a href="https://realestate.daum.net/news/detail/main/20220214100221367" target="_blank" class="btn btn-secondary">뉴스 더보기</a>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+    <!-- Divider-->
+    <hr class="my-4" />
+</div>
+
 {% endblock %}

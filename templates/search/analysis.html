@@ -16,46 +16,50 @@
     </div>
 </header>
 <!-- Main Content-->
-<main>
-
-    <div class="container-fluid">
-        <div class="row">
-            <!--sidebar-->
-            <div class="col-lg-2" style="width: 450px;">
-                <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
-                    <a href="{% url 'search:search' %}" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-                      <svg class="bi me-2" width="30" height="24"></svg>
-                      <span class="fs-3 fw-bold">Search</span>
-                    </a>
-                    <ul class="list-unstyled ps-0">
-                      <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                                data-bs-target="#search" aria-expanded="true">
-                              <h5>부동산 가격 검색</h5>
-                        </button><p></p>
-                        <div class="collapse" id="search">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                              <li><a href="{% url 'search:search' %}" class="link-dark rounded"><h6>- 전월세</h6></a></li>
-                              <li><a href="{% url 'search:sales' %}" class="link-dark rounded"><h6>- 매매</h6></a></li>
-                            </ul>
-                        </div>
-                      </li>
-                      <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                                data-bs-target="#analysis" aria-expanded="false">
-                            <a href="{% url 'search:analysis' %}">
-                                <h5>부동산 가격 분석</h5>
-                            </a>
-                        </button>
-                      </li>
-                    </ul>
-                </div>
+<div class="container-fluid">
+    <div class="row">
+        <!--sidebar-->
+        <div class="col-lg-2" style="width: 450px;">
+            <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+                <a href="{% url 'search:search' %}" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+                  <svg class="bi me-2" width="30" height="24"></svg>
+                  <span class="fs-3 fw-bold">Search</span>
+                </a>
+                <ul class="list-unstyled ps-0">
+                  <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#search" aria-expanded="true">
+                          <h5>부동산 가격 검색</h5>
+                    </button><p></p>
+                    <div class="collapse" id="search">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                          <li><a href="{% url 'search:search' %}" class="link-dark rounded"><h6>- 전월세</h6></a></li>
+                          <li><a href="{% url 'search:sales' %}" class="link-dark rounded"><h6>- 매매</h6></a></li>
+                        </ul>
+                    </div>
+                  </li>
+                  <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#analysis" aria-expanded="false">
+                        <a href="{% url 'search:analysis' %}">
+                            <h5>부동산 가격 분석</h5>
+                        </a>
+                    </button>
+                  </li>
+                </ul>
             </div>
-            <!--Main Context-->
-
+        </div>
+        <!--Main Context-->
+        <div class="col-lg-2 my-2" style="width:1200px">
+            <!--content header-->
+            <div class="jumbotron mx-4">
+                <h3>부동산 분석</h3><p></p><p></p>
+                <hr class="my-2">
+            </div>
         </div>
     </div>
-</main>
+</div>
+
             <!-- Divider-->
             <hr class="my-4" />
         </div>
